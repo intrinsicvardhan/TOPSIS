@@ -44,11 +44,10 @@ def PerformanceScore(df, Splus, Sminus):
     return df
 
 def validate(values):
-    pattern = re.compile(r'^[\d.]+(,[\d.]+)*$')
-
-    if not pattern.match(values):
-        raise argparse.ArgumentTypeError("Invalid Weights format. Please provide comma separated digits")
-    return values
+    for value in values:
+        if ' ' in value:
+            return False
+    return True
     
 
 if __name__ == "__main__":
@@ -61,12 +60,12 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         'Weights',
-        type=validate,
+        type=str,
         help='Comma-separated list of weights'
     )
     parser.add_argument(
         'Impacts', 
-        type=validate,
+        type=str,
         help='Comma-separated list of impacts (+ or -)'
     )
     parser.add_argument(
@@ -79,8 +78,12 @@ if __name__ == "__main__":
     if len(vars(args))!=4:
         parser.error(f'Incorrect number of parameters - 4 needed, provided: {len(vars(args))}')
     
+
     weights = args.Weights.split(',')
     impacts = args.Impacts.split(',')
+
+    assert(validate(weights) == True and validate(impacts) == True), "Weights and Impacts should be present in comma separated format"
+
     try:
         df = pd.read_csv(args.InputDataFile)
     except FileNotFoundError:
