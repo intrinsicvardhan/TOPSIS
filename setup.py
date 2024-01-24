@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.0.1'
+VERSION = '0.0.0.3'
 DESCRIPTION = 'Implementing TOPSIS'
 LONG_DESCRIPTION = 'Technique for Order of Preference by Similarity to Ideal Solution is a multi-criteria decision analysis method'
 
@@ -14,6 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description = LONG_DESCRIPTION,
     packages=find_packages(),
+    package_data={'':['docs/*.md']},
     install_requires=['pandas', 'numpy'],
     keywords=['topsis', 'decision-analysis', 'similarity'],
     classifiers=[
