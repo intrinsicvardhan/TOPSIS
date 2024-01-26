@@ -17,7 +17,9 @@ Topsis-Aaditya-102117021 is a Python library for dealing with Multiple Criteria 
 
 ## Installation
 
-Provide installation instructions here.
+Use the package manager **pip** to install Topsis-Aaditya-102117021
+
+`pip install Topsis-Aaditya-102117021`
 
 ## Usage
 
@@ -25,4 +27,41 @@ Enter csv filename followed by *.csv* extension, then enter the *weights* vector
 
 ```bash
 python sample.py sample.csv "1,1,1,1,2" "+,+,-,+,+" sample-result.csv
+```
+
+## Example
+
+### sample.csv
+
+A csv file showing data for different mobile handsets having varying features
+
+| Model | Storage space (in GB) | Camera (in MP) | Price (in $) | Looks (out of 5) |
+|-------|------------------------|-----------------|---------------|------------------|
+| M1    | 16                     | 12              | 250           | 5                |
+| M2    | 16                     | 8               | 200           | 3                |
+| M3    | 32                     | 16              | 300           | 4                |
+| M4    | 32                     | 8               | 275           | 4                |
+| M5    | 16                     | 16              | 225           | 2                |
+
+weights vector = [1, 1, 1, 1]
+impacts vector = [+,+,-,+]
+
+### input:
+
+`python sample.csv "1,1,1,1" "+,+,-,+" sample-result.csv`
+
+### output:
+
+|   Topsis-score   | Rank |
+|-------------|------|
+| 0.534277    | 3    |
+| 0.308368    | 5    |
+| 0.691632    | 1    |
+| 0.534737    | 2    |
+| 0.401046    | 4    |
+
+
+
+
+
 
