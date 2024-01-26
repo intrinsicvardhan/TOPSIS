@@ -1,8 +1,11 @@
 from setuptools import setup, find_packages
+from pathlib import Path
 
-VERSION = '0.0.0.3'
+VERSION = '0.0.0.4'
 DESCRIPTION = 'Implementing TOPSIS'
-LONG_DESCRIPTION = 'Technique for Order of Preference by Similarity to Ideal Solution is a multi-criteria decision analysis method'
+this_directory = Path(__file__).parent
+print(this_directory)
+LONG_DESCRIPTION = ('this_directory/docs/index.md').read_text()
 
 # Setting up
 setup(
